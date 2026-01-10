@@ -14,8 +14,6 @@ const Setting = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.mainBox}>
 
-
-
         <ScrollView
           contentContainerStyle={{ paddingBottom: 20 }}
           showsVerticalScrollIndicator={false}

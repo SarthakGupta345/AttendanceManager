@@ -1,8 +1,9 @@
+import LoginPage from "@/Components/loginPage";
 import { Redirect } from "expo-router";
 import { Text, View } from "react-native";
 
 export default function Index() {
   return (
-   <Redirect href="/(Subject)/page" />
+    <Redirect href="/(tabs)/Home" />
   );
 }

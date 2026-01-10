@@ -160,14 +160,11 @@ const SubjectPage = () => {
                     
                 </View>
 
-                 <View style={styles.box}>
-                <View style={styles.individualBox}>
-                    <Text>Total Days</Text>
-                    <Text>93</Text>
+                <View>
+                    
                 </View>
 
-               
-            </View>
+                
 
                 
             </ScrollView>

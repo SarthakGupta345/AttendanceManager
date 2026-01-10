@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#F9FAFB",
+        backgroundColor: "#ffffff",
     },
 
     pageTitle: {
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     containerBox: {
         paddingBottom: 80,
         backgroundColor: "#F9FAFB",
-        gap: 20
+        gap: 10
 
 
     },
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     topBox: {
         width: "95%",
         height: 96,
-        backgroundColor: "#E8F8E7",
+        backgroundColor: "#e7f6f892",
         borderRadius: 14,
         marginTop: 12,
         alignSelf: "center",
@@ -34,11 +34,11 @@ export const styles = StyleSheet.create({
 
     subjectBox: {
         width: "95%",
-        backgroundColor: "#e7f8ecff",
+        backgroundColor: "rgba(231, 245, 248, 0.52)",
         borderRadius: 14,
         padding: 14,
         alignSelf: "center",
-        borderBottomColor: "rgba(210, 215, 210, 0.6)",
+        borderBottomColor: "rgba(210, 215, 212, 0.6)",
         borderBottomWidth: 1,
         borderTopColor: "rgba(210, 215, 210, 0.6)",
         borderTopWidth: 1
@@ -75,8 +75,8 @@ export const styles = StyleSheet.create({
         width: 85,
         height: 85,
         borderRadius: 45,
-        backgroundColor: "#D4E2D9",
-        borderWidth: 3,
+        backgroundColor: "#d4dfe225",
+        borderWidth: 2,
         justifyContent: "center",
         alignItems: "center",
     },
@@ -115,4 +115,15 @@ export const styles = StyleSheet.create({
         fontWeight: "600",
         color: "#374151",
     },
+    floatingBox:{
+        position:"absolute",
+        right:10,
+        bottom:100,
+        width:75,
+        height:75,
+        justifyContent:"center",
+        alignItems:"center",
+        borderRadius:50,
+        backgroundColor:"rgb(99, 143, 188)"
+    }
 });

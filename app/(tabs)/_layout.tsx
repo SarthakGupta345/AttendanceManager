@@ -18,9 +18,12 @@ const TabsLayout = () => {
                     left: 0,
                     right: 0,
                     elevation: 0,
-                    backgroundColor: '#c1d9f1ff',
+                    borderTopEndRadius: 15,
+                    borderTopStartRadius: 15,
+                    backgroundColor: 'rgba(193, 217, 241, 0.43)',
                     borderTopWidth: 0,
                     height: 75,
+                    zIndex: 10,
                     paddingTop: 7
                 },
                 tabBarLabelStyle: {

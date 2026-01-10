@@ -101,19 +101,8 @@ export const styles = StyleSheet.create({
     borderRadius: 2,
     backgroundColor: '#1a73e8',
   },
+  floatinBox:{
 
-  box:{
-    flexDirection:"row",
-    flexWrap:"wrap",
-    gap:10,
-    backgroundColor:"red",
-
-  },
-  individualBox:{
-    width:"40%",
-    height:"40%",
-    backgroundColor:"red",
-    borderRadius:10,
-    padding:10
   }
+
 });
