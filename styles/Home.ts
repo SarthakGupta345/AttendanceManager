@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
     },
 
     timeline: {
-        width: 35,
+        width: 33,
         height: 80,
         borderRadius: 40,
         borderWidth: 2,
@@ -88,7 +88,19 @@ export const styles = StyleSheet.create({
         flex: 1,
         gap: 6,
     },
-    background: {
+    topBackground: {
+        flex: 1,
+        borderTopRightRadius: 40,
+        borderTopLeftRadius: 40,
+        height:"1%",
+        backgroundColor: "rgb(249, 251, 254)"
+    },
+    bottomBackground:{
+        flex: 1,
+        borderBottomRightRadius: 40,
+        borderBottomLeftRadius: 40,
+        height:"22%",
+        backgroundColor: "rgb(249, 251, 254)"
 
     },
 

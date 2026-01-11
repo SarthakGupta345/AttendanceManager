@@ -149,7 +149,6 @@ export const cancelClass = async (id: number) => {
     );
 };
 
-
 interface ClassDataBySubjectId {
     subject_id: number,
     start_time: string,

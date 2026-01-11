@@ -1,4 +1,4 @@
-import { dailyClassAutomation, getTodayClass, makeClassPresent } from "@/db/classDb";
+import { dailyClassAutomation, getTodayClass, makeClassAbsent, makeClassPresent } from "@/db/classDb";
 import { useQuery } from "@tanstack/react-query";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -23,12 +23,27 @@ export const useDailyAutomation = () => {
 
 
 export const useMarkPresent = () => {
-  const qc = useQueryClient();
+    const qc = useQueryClient();
 
-  return useMutation({
-    mutationFn: makeClassPresent,
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ["classes", "today"] });
-    },
-  });
+    return useMutation({
+        mutationFn: async (id: number) => {
+            const res = await makeClassPresent(id);
+            if (res.changes === 0) throw new Error("Failed to mark present");
+            return res;
+        },
+        onSuccess: () => {
+            qc.invalidateQueries({ queryKey: ["classes", "today"] });
+        },
+    });
+};
+
+export const useMarkAbsent = () => {
+    const qc = useQueryClient();
+
+    return useMutation({
+        mutationFn: (id: number) => makeClassAbsent(id),
+        onSuccess: () => {
+            qc.invalidateQueries({ queryKey: ["classes", "today"] });
+        },
+    });
 };

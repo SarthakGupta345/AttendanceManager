@@ -13,8 +13,7 @@ import FloatingCalendar from "@/Components/floatingCalendar";
 const Home = () => {
 
     const [calendarSelected, setCalendarSelected] = useState<boolean>(false)
-
-    const [selected, setSelected] = useState<boolean>(false)
+    const [createSelected, setCreateSelected] = useState<boolean>(false)
     return (
         <SafeAreaView style={styles.container}>
 
@@ -73,7 +72,7 @@ const Home = () => {
             <TouchableOpacity style={styles.floatingBox}
                 activeOpacity={0.8}
                 onPress={() => {
-                    setSelected(true)
+                    setCreateSelected(true)
                 }}
             >
                 <Entypo name="plus" size={43} color="black" />

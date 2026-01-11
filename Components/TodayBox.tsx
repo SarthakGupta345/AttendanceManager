@@ -1,10 +1,55 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { styles } from '@/styles/Home'
 import Entypo from '@expo/vector-icons/Entypo';
+import { LinearGradient } from "expo-linear-gradient";
+import { useMarkAbsent, useMarkPresent } from '@/hooks/useClasses';
+
+interface props {
+    name: string,
+    profName: string,
+    startTime: string,
+    endTime: string
+    presentClass: () => void
+    absentClass: () => void
+    notMarkedClass: () => void
+}
+
 const TodayBox = () => {
+
     const [dotSelected, setDotSelected] = useState<boolean>(false)
     const [selected, setSelected] = useState<string>("")
+
+    const id = 2;
+
+    const { mutate } = useMarkPresent();
+    const { mutate: markAbsent } = useMarkAbsent();
+    const presentClass = () => {
+        mutate(id, {
+            onSuccess: () => {
+                Alert.alert("Success", "Attendance marked present");
+            },
+            onError: (error: any) => {
+                console.log(error);
+                Alert.alert('Alert Title', 'My Alert Msg', [
+                    {
+                        text: 'Cancel',
+                        style: 'cancel',
+                        onPress: () => console.log('Cancel Pressed'),
+                    },
+                    { text: 'OK', onPress: () => console.log('OK Pressed') },
+                ]);
+            },
+        });
+
+        setSelected("Present")
+    };
+
+    const absentClass = () => {
+        setSelected("Absent")
+        markAbsent(id);
+    };
+
     return (
         <View style={styles.todayBox}>
             <TouchableOpacity activeOpacity={0.8} style={styles.iconBox}
@@ -29,7 +74,15 @@ const TodayBox = () => {
                 <Text style={styles.timeText}>8:39 AM</Text>
 
                 <View style={styles.timeline}>
+                    <LinearGradient
+                        colors={["#1a8321c6", "#83ba7dfe"]}
+                        style={styles.topBackground}
+                    />
 
+                    <LinearGradient
+                        colors={["#83ba7dfe", "#ffffffc6"]}
+                        style={styles.bottomBackground}
+                    />
                 </View>
 
                 <Text style={styles.timeText}>9:40 AM</Text>
@@ -49,7 +102,7 @@ const TodayBox = () => {
                     <TouchableOpacity style={[styles.attendancePill, styles.present]}
                         activeOpacity={0.8}
                         onPress={() => {
-                            setSelected("Present")
+                            presentClass()
                         }}
                     >
                         {
