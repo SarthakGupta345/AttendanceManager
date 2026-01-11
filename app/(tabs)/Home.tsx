@@ -9,11 +9,18 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Entypo, FontAwesome5 } from "@expo/vector-icons";
 import FloatingBox from "@/Components/floatingBox";
+import FloatingCalendar from "@/Components/floatingCalendar";
 const Home = () => {
+
+    const [calendarSelected, setCalendarSelected] = useState<boolean>(false)
 
     const [selected, setSelected] = useState<boolean>(false)
     return (
         <SafeAreaView style={styles.container}>
+
+            {/* calendar Selected */}
+
+
             {/* Date Header */}
             <View style={styles.dateBox}>
                 <Text style={styles.dateText}>23 Feb 2026</Text>
@@ -25,7 +32,11 @@ const Home = () => {
                     gap: 15
                 }}>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity activeOpacity={0.8}
+                        onPress={() => {
+                            setCalendarSelected(true)
+                        }}
+                    >
                         <FontAwesome name="calendar" size={22} color="black" />
                     </TouchableOpacity>
 
@@ -42,6 +53,9 @@ const Home = () => {
                     </TouchableOpacity>
                 </View>
             </View>
+
+
+
 
 
             <ScrollView style={styles.cardBox}
@@ -66,7 +80,7 @@ const Home = () => {
             </TouchableOpacity>
 
             {
-                false && (
+                true && (
                     <FloatingBox />
                 )
             }

@@ -163,24 +163,72 @@ export const styles = StyleSheet.create({
 
     // Floating Box
 
-    floatBox:{
+    floatBox: {
         position: "absolute",
         width: "100%",
-        height: "100%",
+        height: "98.5%",
         justifyContent: "center",
         alignItems: "center",
         borderRadius: 10,
         backgroundBlendMode: "multiply",
         backgroundColor: "rgb(49, 50, 50)",
-        opacity: 0.3,
-        zIndex:40
+        opacity: 1,
+        zIndex: 40
     },
-    floatMainBox:{
-        height:"50%",
-        width:"90%",
-        backgroundColor:"red",
-        opacity:1,
-        borderRadius:20
-        
+    floatMainBox: {
+        height: "60%",
+        width: "90%",
+        backgroundColor: "#d0dae2",
+        opacity: 1,
+        borderRadius: 10,
+        shadowRadius: 10,
+    },
+    topBox: {
+        paddingTop: 10,
+        borderBottomRightRadius: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: "rgb(139, 143, 143)",
+        flexDirection: "row",
+        gap: 10,
+        alignItems: "center",
+        paddingHorizontal: 10
+    },
+    topText: {
+        fontWeight: "600",
+        fontSize: 22,
+        fontFamily: "#107feeff"
+    },
+    individualBox: {
+        paddingHorizontal: 17,
+        paddingBottom: 12,
+
+    },
+    selectedBox: {
+        paddingHorizontal: 17,
+        paddingBottom: 12,
+        borderBottomColor: "black",
+        borderBottomWidth: 2,
+        borderTopEndRadius: 10,
+        borderTopStartRadius: 10
+    },
+    bottomBox: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        paddingHorizontal: 20,
+        backgroundColor: "#4182b7",
+        borderBottomEndRadius: 10,
+        borderBottomStartRadius: 10,
+        marginTop: "auto",
+    },
+    ConfirmBox: {
+        borderRightColor: "#d0dae2",
+        borderRightWidth: 1,
+        paddingVertical: 15,
+        paddingHorizontal: 34
+    },
+    CancelBox: {
+        paddingVertical: 15,
+        paddingHorizontal: 35
     }
 });

@@ -41,7 +41,6 @@ export const getTodaySubjects = async (): Promise<Subjects[]> => {
     );
 };
 
-
 interface Subjects {
     id: number;
     start_time: string;
