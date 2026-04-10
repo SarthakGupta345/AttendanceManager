@@ -8,86 +8,83 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { settingOptions } from '@/Constants/SettingOPtions/deviceOptions'
 import { deviceOptions } from '@/Constants/SettingOPtions/RateOPtions'
 import { cloudOptions } from '@/Constants/SettingOPtions/cloudOptions'
+import { StatusBar } from 'expo-status-bar';
 
 const Setting = () => {
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar style="dark" />
       <View style={styles.mainBox}>
-
         <ScrollView
-          contentContainerStyle={{ paddingBottom: 20 }}
+          contentContainerStyle={{ paddingBottom: 50 }}
           showsVerticalScrollIndicator={false}
-
         >
-
           <View>
-
             <View style={styles.profileBox}>
               <Image
                 src={photo}
                 style={styles.imageBox}
-                alt='sunny Leone'
+                alt='user profile'
               />
-
               <View>
-                <Text style={{ fontSize: 20, fontWeight: '600' }}>Hello Chandan</Text>
-                <Text>Have a Nice day</Text>
+                <Text style={styles.profileName}>Hello Chandan</Text>
+                <Text style={styles.profileSubtitle}>Have a Nice day</Text>
               </View>
             </View>
 
+            {/* Keep sections separated */}
             <View style={styles.divideBox}>
-              {
-                settingOptions.map((item, index) => (
-                  <TouchableOpacity activeOpacity={0.7} key={index} style={styles.themeBox}>
-                    {item.icon}
-                    <View>
-                      <Text style={styles.mainTittle}>{item.tittle}</Text>
-                      <Text style={styles.subTittle}>{item.subTittle}</Text>
-                    </View>
-                  </TouchableOpacity>
-                ))
-              }
-
+              {settingOptions.map((item, index) => (
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  key={index}
+                  style={[styles.themeBox, index === settingOptions.length - 1 && styles.noBorder]}
+                >
+                  {/* Standard icon rendering, text correctly wrapping */}
+                  {item.icon}
+                  <View style={styles.textContainer}>
+                    <Text style={styles.mainTittle}>{item.tittle}</Text>
+                    <Text style={styles.subTittle}>{item.subTittle}</Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
             </View>
 
             <View style={styles.divideBox}>
-              {
-                deviceOptions.map((item, index) => (
-                  <TouchableOpacity activeOpacity={0.7} key={index} style={styles.themeBox}>
-                    {item.icon}
-                    <View>
-                      <Text style={styles.mainTittle}>{item.tittle}</Text>
-                      <Text style={styles.subTittle}>{item.subTittle}</Text>
-                    </View>
-                  </TouchableOpacity>
-                ))
-              }
+              {deviceOptions.map((item, index) => (
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  key={index}
+                  style={[styles.themeBox, index === deviceOptions.length - 1 && styles.noBorder]}
+                >
+                  {item.icon}
+                  <View style={styles.textContainer}>
+                    <Text style={styles.mainTittle}>{item.tittle}</Text>
+                    <Text style={styles.subTittle}>{item.subTittle}</Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
             </View>
 
             <View style={styles.divideBox}>
-              {
-                cloudOptions.map((item, index) => (
-                  <TouchableOpacity activeOpacity={0.7} key={index} style={styles.themeBox}>
-                    {item.icon}
-                    <View>
-                      <Text style={styles.mainTittle}>{item.tittle}</Text>
-                      <Text style={styles.subTittle}>{item.subTittle}</Text>
-                    </View>
-                  </TouchableOpacity>
-                ))
-              }
+              {cloudOptions.map((item, index) => (
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  key={index}
+                  style={[styles.themeBox, index === cloudOptions.length - 1 && styles.noBorder]}
+                >
+                  {item.icon}
+                  <View style={styles.textContainer}>
+                    <Text style={styles.mainTittle}>{item.tittle}</Text>
+                    <Text style={styles.subTittle}>{item.subTittle}</Text>
+                  </View>
+                </TouchableOpacity>
+              ))}
             </View>
-
 
           </View>
-
-
-
-
-
         </ScrollView>
       </View>
-
     </SafeAreaView>
   )
 }

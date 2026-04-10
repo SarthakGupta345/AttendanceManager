@@ -10,12 +10,15 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Entypo, FontAwesome5 } from "@expo/vector-icons";
 import FloatingBox from "@/Components/floatingBox";
 import FloatingCalendar from "@/Components/floatingCalendar";
+import { StatusBar } from "expo-status-bar";
+
 const Home = () => {
 
     const [calendarSelected, setCalendarSelected] = useState<boolean>(false)
     const [createSelected, setCreateSelected] = useState<boolean>(false)
     return (
         <SafeAreaView style={styles.container}>
+            <StatusBar style="dark" />
 
             {/* calendar Selected */}
 
@@ -36,17 +39,17 @@ const Home = () => {
                             setCalendarSelected(true)
                         }}
                     >
-                        <FontAwesome name="calendar" size={22} color="black" />
+                        <FontAwesome name="calendar" size={22} color="#1E293B" />
                     </TouchableOpacity>
 
                     <TouchableOpacity style={{
                         marginLeft: 6
                     }}>
-                        <MaterialIcons name="sort" size={24} color="black" />
+                        <MaterialIcons name="sort" size={24} color="#1E293B" />
                     </TouchableOpacity>
 
                     <TouchableOpacity>
-                        <Entypo name="dots-three-vertical" size={20} color="black" style={{
+                        <Entypo name="dots-three-vertical" size={20} color="#1E293B" style={{
                             marginTop: 4
                         }} />
                     </TouchableOpacity>
@@ -75,11 +78,11 @@ const Home = () => {
                     setCreateSelected(true)
                 }}
             >
-                <Entypo name="plus" size={43} color="black" />
+                <Entypo name="plus" size={32} color="#FFFFFF" />
             </TouchableOpacity>
 
             {
-                true && (
+                false && (
                     <FloatingBox />
                 )
             }

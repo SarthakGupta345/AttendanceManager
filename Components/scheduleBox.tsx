@@ -8,7 +8,7 @@ const ScheduleBox = () => {
         <View style={styles.box}>
             {/* Menu */}
             <TouchableOpacity activeOpacity={0.7} style={styles.dotBox}>
-                <Entypo name="dots-three-vertical" size={16} color="#374151" />
+                <Entypo name="dots-three-vertical" size={18} color="#94A3B8" />
             </TouchableOpacity>
 
             {/* Number */}

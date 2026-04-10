@@ -3,128 +3,179 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#ffffff",
-        height:200
+        backgroundColor: "#F8FAFC", // Match premium light theme
     },
 
     pageTitle: {
-        fontSize: 25,
-        fontWeight: "600",
-        marginTop: 12,
-        marginLeft: 16,
-        color: "#111827",
-        fontFamily: "Inter_600SemiBold"
+        fontSize: 32,
+        fontWeight: "800",
+        marginTop: 20,
+        marginLeft: 20,
+        color: "#0F172A",
+        letterSpacing: 0.5,
     },
 
     containerBox: {
         paddingBottom: 80,
-        backgroundColor: "#F9FAFB",
-        gap: 10
-
-
+        backgroundColor: "#F8FAFC",
+        paddingHorizontal: 16,
+        paddingTop: 10,
+        gap: 16
     },
 
     topBox: {
-        width: "95%",
-        height: 96,
-        backgroundColor: "#e7f6f892",
-        borderRadius: 14,
+        width: "100%",
+        height: 100,
+        backgroundColor: "#FFFFFF",
+        borderRadius: 24,
         marginTop: 12,
-        alignSelf: "center",
+        shadowColor: "#94A3B8",
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 0.1,
+        shadowRadius: 15,
+        elevation: 3,
+        borderWidth: 1,
+        borderColor: "#E2E8F0"
     },
 
     subjectBox: {
-        width: "95%",
-        backgroundColor: "rgba(231, 245, 248, 0.52)",
-        borderRadius: 14,
-        padding: 14,
+        width: "100%",
+        backgroundColor: "#FFFFFF",
+        borderRadius: 24,
+        padding: 20,
         alignSelf: "center",
-        borderBottomColor: "rgba(210, 215, 212, 0.6)",
-        borderBottomWidth: 1,
-        borderTopColor: "rgba(210, 215, 210, 0.6)",
-        borderTopWidth: 1
+        borderWidth: 1,
+        borderColor: "#E2E8F0",
+        shadowColor: "#94A3B8",
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 0.1,
+        shadowRadius: 15,
+        elevation: 3,
+        marginBottom: 16, // So they gap properly if multiple
     },
 
     subjectHeader: {
         flexDirection: "row",
         alignItems: "center",
-        gap: 10,
-        marginBottom: 12,
+        justifyContent: "space-between",
+        marginBottom: 20,
     },
 
     subjectName: {
-        fontSize: 16,
-        fontWeight: "600",
-        color: "#111827",
+        fontSize: 19,
+        fontWeight: "800",
+        color: "#1E293B",
+        flex: 1,
     },
 
     subjectCode: {
-        fontSize: 13,
-        color: "#6B7280",
+        fontSize: 14,
+        fontWeight: "700",
+        color: "#4F46E5",
+        backgroundColor: "#EEF2FF",
+        paddingHorizontal: 12,
+        paddingVertical: 6,
+        borderRadius: 12,
+        overflow: "hidden", // if border radius doesn't apply to Text on iOS without this
     },
 
     statsRow: {
         flexDirection: "row",
         justifyContent: "space-between",
+        gap: 10,
     },
 
     statItem: {
+        flex: 1,
+        backgroundColor: "#F8FAFC",
+        borderRadius: 16,
+        paddingVertical: 12,
+        paddingHorizontal: 4,
         alignItems: "center",
+        borderWidth: 1,
+        borderColor: "#F1F5F9",
     },
 
     circleBox: {
-        width: 85,
-        height: 85,
-        borderRadius: 45,
-        backgroundColor: "#d4dfe225",
-        borderWidth: 2,
-        justifyContent: "center",
+        width: '100%',
         alignItems: "center",
+        justifyContent: "center",
     },
 
-    presentBorder: {
-        borderColor: "#15803D",
+    presentItem: {
+        backgroundColor: "#F0FDF4",
+        borderColor: "#DCFCE7",
     },
 
-    absentBorder: {
-        borderColor: "#DC2626",
+    absentItem: {
+        backgroundColor: "#FEF2F2",
+        borderColor: "#FEE2E2",
+    },
+    
+    notMarkedItem: {
+        backgroundColor: "#F8FAFC",
+        borderColor: "#F1F5F9",
     },
 
-    gtBorder: {
-        borderColor: "#3B82F6",
-    },
-    notMarkedBorder: {
-        borderColor: "#F59E0B",
+    gtItem: {
+        backgroundColor: "#EFF6FF",
+        borderColor: "#DBEAFE",
     },
 
-    statNumber: {
+    statNumberBox: {
+        flexDirection: "row",
+        alignItems: "baseline",
+        justifyContent: "center",
+        gap: 2,
+    },
+
+    statNumberTop: {
         fontSize: 22,
-        fontWeight: "700",
+        fontWeight: "800",
         color: "#0F172A",
     },
+    
+    statNumberBottom: {
+        fontSize: 14,
+        fontWeight: "600",
+        color: "#64748B",
+    },
 
-    divider: {
-        width: 40,
-        height: 1,
-        backgroundColor: "#374151",
-        marginVertical: 4,
+    slashDivider: {
+        fontSize: 18,
+        fontWeight: "400",
+        color: "#94A3B8",
+        marginHorizontal: 2,
+        paddingTop: 4, // aligns nicely with the baseline of numbers
     },
 
     statLabel: {
         marginTop: 6,
-        fontSize: 13,
-        fontWeight: "600",
-        color: "#374151",
+        fontSize: 11,
+        fontWeight: "700",
+        color: "#64748B",
+        textTransform: "uppercase",
+        letterSpacing: 0.5,
     },
+    
+    presentLabel: { color: "#16A34A" },
+    absentLabel:  { color: "#DC2626" },
+    gtLabel:      { color: "#2563EB" },
+
     floatingBox:{
         position:"absolute",
-        right:10,
-        bottom:100,
-        width:75,
-        height:75,
+        right: 20,
+        bottom: 100,
+        width: 64,
+        height: 64,
         justifyContent:"center",
         alignItems:"center",
-        borderRadius:50,
-        backgroundColor:"rgb(99, 143, 188)"
+        borderRadius:32,
+        backgroundColor:"#4F46E5",
+        shadowColor: "#4F46E5",
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 0.4,
+        shadowRadius: 16,
+        elevation: 8,
     }
 });

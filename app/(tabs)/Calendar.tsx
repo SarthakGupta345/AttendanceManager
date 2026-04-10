@@ -11,7 +11,7 @@ const months = [
 ];
 
 const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
+import { StatusBar } from "expo-status-bar";
 const Calendar = () => { 
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -110,11 +110,12 @@ const Calendar = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar style="dark" />
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Month Navigation Header */}
         <View style={styles.header}>
           <TouchableOpacity onPress={goToPreviousMonth} style={styles.navButton}>
-            <Octicons name="chevron-left" size={28} color="#5f6368" />
+            <Octicons name="chevron-left" size={28} color="#64748B" />
           </TouchableOpacity>
 
           <View style={styles.titleContainer}>
@@ -123,7 +124,7 @@ const Calendar = () => {
           </View>
 
           <TouchableOpacity onPress={goToNextMonth} style={styles.navButton}>
-            <Octicons name="chevron-right" size={28} color="#5f6368" />
+            <Octicons name="chevron-right" size={28} color="#64748B" />
           </TouchableOpacity>
         </View>
 

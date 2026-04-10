@@ -3,66 +3,72 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#F9FAFB",
+        backgroundColor: "#F8FAFC",
     },
 
     dateBox: {
         width: "100%",
-        paddingHorizontal: 25,
-        height: 50,
+        paddingHorizontal: 20,
+        paddingTop: 16,
+        paddingBottom: 8,
         alignSelf: "center",
         flexDirection: "row",
-        gap: 25
+        gap: 20,
     },
+    
     dateText: {
-        fontSize: 17,
-        fontWeight: "500"
-
-
+        fontSize: 18,
+        fontWeight: "700",
+        color: "#0F172A",
     },
+    
     day: {
-
-    }
-    ,
+        fontSize: 16,
+        color: "#64748B",
+    },
 
     box: {
-        width: "95%",
-        height: 96,
-        backgroundColor: "#E8F8E7",
-        borderRadius: 14,
-        marginTop: 12,
+        width: "90%",
+        backgroundColor: "#FFFFFF",
+        borderRadius: 24,
+        marginTop: 10,
         alignSelf: "center",
-        padding: 12,
+        padding: 20,
         flexDirection: "row",
-        gap: 12,
+        gap: 16,
+        alignItems: "center",
 
         // Shadow
-        shadowColor: "#000",
-        shadowOpacity: 0.08,
-        shadowRadius: 6,
+        borderWidth: 1,
+        borderColor: "#E2E8F0",
+        shadowColor: "#94A3B8",
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 0.1,
+        shadowRadius: 15,
         elevation: 3,
     },
 
     dotBox: {
         position: "absolute",
-        right: 10,
-        top: 10,
+        right: 16,
+        top: 20,
         padding: 6, // better touch area
+        zIndex: 10,
     },
 
     numberBox: {
-        width: 64,
-        height: 64,
-        borderRadius: 32,
-        backgroundColor: "#111827",
+        width: 56,
+        height: 56,
+        borderRadius: 28,
+        backgroundColor: "#EEF2FF",
         alignItems: "center",
         justifyContent: "center",
     },
 
     numberText: {
-        fontSize: 28,
-        fontWeight: "700",
-        color: "#fff",
+        fontSize: 24,
+        fontWeight: "800",
+        color: "#4F46E5",
     },
 
     content: {
@@ -76,36 +82,42 @@ export const styles = StyleSheet.create({
         flexWrap: "wrap",
         gap: 6,
         alignItems: "center",
+        paddingRight: 24, // Keep away from dot menu
     },
 
     titleText: {
-        fontSize: 15,
-        fontWeight: "600",
-        color: "#111827",
+        fontSize: 17,
+        fontWeight: "800",
+        color: "#1E293B",
     },
 
     codeText: {
         fontSize: 13,
-        fontWeight: "500",
-        color: "#6B7280",
+        fontWeight: "700",
+        color: "#4F46E5",
+        letterSpacing: 0.5,
     },
 
     timeText: {
         fontSize: 13,
-        color: "#374151",
+        fontWeight: "600",
+        color: "#64748B",
     },
 
     statusPill: {
         alignSelf: "flex-start",
-        backgroundColor: "#DCFCE7",
-        paddingHorizontal: 10,
-        paddingVertical: 4,
-        borderRadius: 999,
+        backgroundColor: "#F0FDF4",
+        paddingHorizontal: 12,
+        paddingVertical: 6,
+        borderRadius: 12,
+        marginTop: 4,
+        borderWidth: 1,
+        borderColor: "#DCFCE7",
     },
 
     statusText: {
         fontSize: 12,
-        fontWeight: "600",
-        color: "#0e622dff",
+        fontWeight: "700",
+        color: "#16A34A",
     },
 });

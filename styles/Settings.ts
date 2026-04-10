@@ -2,50 +2,70 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        backgroundColor: "#F1F5F9" // Clean iOS-like pale background
     },
     mainBox: {
-
+        flex: 1,
+        paddingHorizontal: 13,
+        paddingTop: 4,
     },
     imageBox: {
-        height: 70,
-        width: 70,
-        borderRadius: 50
+        height: 64,
+        width: 64,
+        borderRadius: 32,
     },
     profileBox: {
         flexDirection: "row",
-        gap: 12,
-        paddingHorizontal: 12,
-        borderBottomColor: "#7791c4ff",
-        borderBottomWidth: 1,
-        paddingVertical: 15
-
+        alignItems: "center",
+        gap: 16,
+        padding: 20,
+        backgroundColor: "#FFFFFF",
+        borderRadius: 20,
+        marginBottom: 10,
+    },
+    profileName: {
+        fontSize: 22,
+        fontWeight: '700',
+        color: '#0F172A',
+        marginBottom: 2,
+    },
+    profileSubtitle: {
+        fontSize: 15,
+        fontWeight: '500',
+        color: '#64748B',
+    },
+    divideBox: {
+        backgroundColor: "#FFFFFF", // Crisp white sections
+        borderRadius: 20,
+        marginBottom: 14, // Separates sections from each other
+        overflow: "hidden",
     },
     themeBox: {
         flexDirection: "row",
-        gap: 5,
-        paddingHorizontal: 15,
-        borderBottomColor: "#e5e8eeff",
-        borderBottomWidth: 1,
-        paddingBottom: 15,
-        paddingVertical: 15
+        alignItems: "center",
+        gap: 16,
+        paddingHorizontal: 20,
+        paddingVertical: 18,
+        borderBottomColor: "#F8FAFC",
+        borderBottomWidth: 1.5,
+    },
+    noBorder: {
+        borderBottomWidth: 0,
     },
     mainTittle: {
         fontSize: 17,
         fontWeight: '600',
-        paddingHorizontal: 15
+        color: '#1E293B',
+        marginBottom: 2,
     },
     subTittle: {
         fontSize: 14,
-        fontWeight: '400',
-        paddingHorizontal: 15,
-        color: "#6B7280"
+        fontWeight: '500',
+        color: "#64748B"
     },
-    divideBox: {
-        borderBottomColor: "#7791c4ff",
-        borderBottomWidth: 1,
-        marginTop: 5
-
-
+    textContainer: {
+        flex: 1,
+        justifyContent: 'center',
     }
-})
+});
