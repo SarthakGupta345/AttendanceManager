@@ -92,14 +92,14 @@ export const styles = StyleSheet.create({
         flex: 1,
         borderTopRightRadius: 40,
         borderTopLeftRadius: 40,
-        height:"1%",
+        height: "1%",
         backgroundColor: "rgb(249, 251, 254)"
     },
-    bottomBackground:{
+    bottomBackground: {
         flex: 1,
         borderBottomRightRadius: 40,
         borderBottomLeftRadius: 40,
-        height:"22%",
+        height: "22%",
         backgroundColor: "rgb(249, 251, 254)"
 
     },
@@ -109,7 +109,7 @@ export const styles = StyleSheet.create({
         fontWeight: "700",
         color: "#111827",
     },
-
+   
     codeText: {
         fontSize: 14,
         color: "#6B7280",
@@ -175,26 +175,44 @@ export const styles = StyleSheet.create({
 
     // Floating Box
 
+
     floatBox: {
         position: "absolute",
         width: "100%",
         height: "98.5%",
         justifyContent: "center",
         alignItems: "center",
-        borderRadius: 10,
-        backgroundBlendMode: "multiply",
-        backgroundColor: "rgb(49, 50, 50)",
-        opacity: 1,
-        zIndex: 40
+        backgroundColor: "rgba(0,0,0,0.45)",
+        zIndex: 40,
     },
+
     floatMainBox: {
-        height: "60%",
+        height: "65%",
         width: "90%",
-        backgroundColor: "#d0dae2",
-        opacity: 1,
-        borderRadius: 10,
-        shadowRadius: 10,
+        backgroundColor: "#dee4e9",
+        borderRadius: 12,
+        overflow: "hidden",
     },
+
+    closeBtn: {
+        position: "absolute",
+        right: 16,
+        top: 14,
+        zIndex: 10,
+    },
+
+    topText: {
+        fontWeight: "600",
+        fontSize: 20,
+        color: "#000000",
+    },
+
+    actionText: {
+        fontWeight: "700",
+        fontSize: 18,
+        color: "#f5efef",
+    },
+
     topBox: {
         paddingTop: 10,
         borderBottomRightRadius: 10,
@@ -205,11 +223,7 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         paddingHorizontal: 10
     },
-    topText: {
-        fontWeight: "600",
-        fontSize: 22,
-        fontFamily: "#107feeff"
-    },
+
     individualBox: {
         paddingHorizontal: 17,
         paddingBottom: 12,
@@ -228,19 +242,40 @@ export const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         paddingHorizontal: 20,
-        backgroundColor: "#4182b7",
+        backgroundColor: "#1c4669",
         borderBottomEndRadius: 10,
         borderBottomStartRadius: 10,
         marginTop: "auto",
     },
     ConfirmBox: {
-        borderRightColor: "#d0dae2",
+        borderRightColor: "#e1e8ed",
         borderRightWidth: 1,
-        paddingVertical: 15,
+        paddingVertical: 18,
         paddingHorizontal: 34
     },
     CancelBox: {
         paddingVertical: 15,
         paddingHorizontal: 35
+    },
+    text: {
+        fontWeight: "500",
+        fontSize: 15
+    },
+    inputBox: {
+        borderWidth: 1,
+        borderColor: "black",
+        borderRadius: 8,
+        paddingHorizontal: 10,
+        marginTop: 5,
+        paddingVertical: 15
+    },
+    formBox: {
+        paddingVertical: 5,
+        marginTop:5,
+        paddingHorizontal: 15,
+    },
+    formIndividualBox: {
+        paddingVertical: 11
+
     }
 });

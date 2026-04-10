@@ -192,3 +192,22 @@ export const makeClassAbsent = async (id: number) => {
         [id]
     );
 };
+
+
+export interface ClassData {
+    name: string,
+    profName: string,
+    startTime: string,
+    endTime: string
+}
+
+export const createClass = async (data: ClassData) => {
+    const db = await getDB();
+    return await db.runAsync(
+        `
+        INSERT INTO Classes (name, prof_name, start_time, end_time)
+        VALUES (?, ?, ?, ?);
+        `,
+        [data.name, data.profName, data.startTime, data.endTime]
+    )
+}
