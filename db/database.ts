@@ -1,3 +1,4 @@
+import { dailyClassAutomation, seedSubjects } from "./classDb";
 import * as SQLite from "expo-sqlite";
 
 export const getDB = async () => {
@@ -39,6 +40,7 @@ export const initDB = async () => {
     end_time TEXT NOT NULL,
 
     lecture_days INTEGER NOT NULL,
+    type TEXT DEFAULT 'Lecture',
 
     attendance_criteria INTEGER DEFAULT 75,
     completed INTEGER DEFAULT 0,
@@ -60,12 +62,15 @@ export const initDB = async () => {
     status TEXT NOT NULL DEFAULT 'not_marked'
       CHECK (status IN ('present', 'absent', 'gt', 'not_marked')),
 
+    type TEXT DEFAULT 'Lecture',
     created_date TEXT NOT NULL DEFAULT CURRENT_DATE,
 
     FOREIGN KEY (subject_id) REFERENCES Subjects(id) ON DELETE CASCADE
   );
 `);
 
+    await seedSubjects();
+    await dailyClassAutomation();
 
-    console.log("✅ Database initialized");
+    console.log("✅ Database initialized and synced");
 };

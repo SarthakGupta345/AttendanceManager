@@ -5,25 +5,31 @@ import Entypo from '@expo/vector-icons/Entypo';
 import { useMarkAbsent, useMarkPresent } from '@/hooks/useClasses';
 
 interface props {
-    name?: string,
+    id: number,
+    subjectName?: string,
+    subjectCode?: string,
     profName?: string,
     startTime?: string,
-    endTime?: string
+    endTime?: string,
+    status?: string,
     presentClass?: () => void
     absentClass?: () => void
     notMarkedClass?: () => void
 }
 
 const TodayBox = ({
+    id,
+    subjectName = 'Software Engineering',
+    subjectCode = 'CSE 24231',
+    profName = 'Prof. Michael S. Smith',
     startTime = "08:39 AM",
-    endTime = "09:40 AM"
+    endTime = "09:40 AM",
+    status = "not_marked"
 }: props) => {
 
     const [dotSelected, setDotSelected] = useState<boolean>(false)
-    const [selected, setSelected] = useState<string>("")
+    const [selected, setSelected] = useState<string>(status)
     const [progress, setProgress] = useState<number>(0);
-
-    const id = 2;
 
     const { mutate } = useMarkPresent();
     const { mutate: markAbsent } = useMarkAbsent();
@@ -74,11 +80,11 @@ const TodayBox = ({
             },
         });
 
-        setSelected("Present")
+        setSelected("present")
     };
 
     const absentClass = () => {
-        setSelected("Absent")
+        setSelected("absent")
         markAbsent(id);
     };
 
@@ -115,39 +121,39 @@ const TodayBox = ({
             {/* Details */}
             <View style={styles.detailsBox}>
                 <View>
-                    <Text style={styles.titleText}>Software Engineering</Text>
-                    <Text style={styles.codeText}>(CSE24231)</Text>
+                    <Text style={styles.titleText}>{subjectName}</Text>
+                    <Text style={styles.codeText}>({subjectCode})</Text>
                 </View>
 
-                <Text style={styles.profText}>Prof. Michael S. Smith</Text>
+                <Text style={styles.profText}>{profName}</Text>
 
                 {/* Attendance */}
                 <View style={styles.attendanceBox}>
                     <TouchableOpacity 
-                        style={[styles.attendancePill, selected === "Present" ? styles.presentActive : styles.present]}
+                        style={[styles.attendancePill, selected === "present" ? styles.presentActive : styles.present]}
                         activeOpacity={0.8}
                         onPress={() => presentClass()}
                     >
-                        {selected !== "Present" && <View style={[styles.dot, { backgroundColor: "#86EFAC" }]} />}
-                        <Text style={[styles.attendanceText, styles.presentText, selected === "Present" && styles.activeText]} numberOfLines={1}>Present</Text>
+                        {selected !== "present" && <View style={[styles.dot, { backgroundColor: "#86EFAC" }]} />}
+                        <Text style={[styles.attendanceText, styles.presentText, selected === "present" && styles.activeText]} numberOfLines={1}>Present</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity 
-                        style={[styles.attendancePill, selected === "Absent" ? styles.absentActive : styles.absent]}
+                        style={[styles.attendancePill, selected === "absent" ? styles.absentActive : styles.absent]}
                         activeOpacity={0.8}
                         onPress={() => absentClass()}
                     >
-                        {selected !== "Absent" && <View style={[styles.dot, { backgroundColor: "#FCA5A5" }]} />}
-                        <Text style={[styles.attendanceText, styles.absentText, selected === "Absent" && styles.activeText]} numberOfLines={1}>Absent</Text>
+                        {selected !== "absent" && <View style={[styles.dot, { backgroundColor: "#FCA5A5" }]} />}
+                        <Text style={[styles.attendanceText, styles.absentText, selected === "absent" && styles.activeText]} numberOfLines={1}>Absent</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity 
-                        style={[styles.attendancePill, selected === "Not Marked" || selected === "" ? styles.notMarkedActive : styles.notMarked]}
+                        style={[styles.attendancePill, selected === "not_marked" || selected === "" ? styles.notMarkedActive : styles.notMarked]}
                         activeOpacity={0.8}
-                        onPress={() => setSelected("Not Marked")}
+                        onPress={() => setSelected("not_marked")}
                     >
-                         {selected !== "Not Marked" && selected !== "" && <View style={[styles.dot, { backgroundColor: "#CBD5E1" }]} />}
-                        <Text style={[styles.attendanceText, styles.notMarkedText, (selected === "Not Marked" || selected === "") && styles.activeText]} numberOfLines={1}>Not Marked</Text>
+                         {selected !== "not_marked" && selected !== "" && <View style={[styles.dot, { backgroundColor: "#CBD5E1" }]} />}
+                        <Text style={[styles.attendanceText, styles.notMarkedText, (selected === "not_marked" || selected === "") && styles.activeText]} numberOfLines={1}>Not Marked</Text>
                     </TouchableOpacity>
                 </View>
             </View>

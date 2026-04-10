@@ -12,7 +12,11 @@ import {
   View,
 } from "react-native";
 
-const FloatingBox = () => {
+interface FloatingBoxProps {
+    onClose?: () => void;
+}
+
+const FloatingBox = ({ onClose }: FloatingBoxProps) => {
   const [visible, setVisible] = useState(true);
   const [error, setError] = useState<{ type: string, message: string }>({ type: "", message: "" });
   const [optionSelected, setOptionSelected] = useState<"Class" | "Subject">("Class");
@@ -96,7 +100,10 @@ const FloatingBox = () => {
         {/* Close */}
         <TouchableOpacity
           style={styles.closeBtn}
-          onPress={() => setVisible(false)}
+          onPress={() => {
+            setVisible(false);
+            onClose?.();
+          }}
         >
           <Entypo name="cross" size={26} color="#333" />
         </TouchableOpacity>
@@ -241,7 +248,10 @@ const FloatingBox = () => {
 
           <TouchableOpacity
             style={styles.CancelBox}
-            onPress={() => setVisible(false)}
+            onPress={() => {
+                setVisible(false);
+                onClose?.();
+            }}
           >
             <Text style={styles.actionText}>CANCEL</Text>
           </TouchableOpacity>

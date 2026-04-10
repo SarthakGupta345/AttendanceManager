@@ -68,6 +68,43 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingTop: 6,
     },
+    
+    /* Stats Card */
+    statsCard: {
+        backgroundColor: "#4F46E5",
+        borderRadius: 24,
+        padding: 20,
+        marginBottom: 20,
+        shadowColor: "#4F46E5",
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 0.3,
+        shadowRadius: 15,
+        elevation: 6,
+    },
+    statsHeader: {
+        fontSize: 14,
+        fontWeight: "700",
+        color: "rgba(255,255,255,0.8)",
+        marginBottom: 4,
+        textTransform: "uppercase",
+        letterSpacing: 1,
+    },
+    statsMainRow: {
+        flexDirection: "row",
+        alignItems: "flex-end",
+        justifyContent: "space-between",
+    },
+    statsPercentage: {
+        fontSize: 36,
+        fontWeight: "900",
+        color: "#FFFFFF",
+    },
+    statsSubValue: {
+        fontSize: 15,
+        fontWeight: "600",
+        color: "rgba(255,255,255,0.9)",
+        marginBottom: 6,
+    },
 
     /* Class Card */
     todayBox: {
@@ -97,6 +134,26 @@ export const styles = StyleSheet.create({
         fontSize: 13,
         fontWeight: "700",
         color: "#64748B",
+    },
+
+    /* Lunch Divider */
+    lunchDividerContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 16,
+        paddingHorizontal: 8,
+    },
+    lunchDividerLine: {
+        flex: 1,
+        height: 1,
+        backgroundColor: "#E2E8F0",
+    },
+    lunchDividerText: {
+        marginHorizontal: 12,
+        fontSize: 12,
+        fontWeight: "700",
+        color: "#94A3B8",
+        letterSpacing: 1.2,
     },
 
     timeline: {

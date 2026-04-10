@@ -6,9 +6,9 @@ import { initDB } from "@/db/database";
 
 
 export default function RootLayout() {
-  // useEffect(() => {
-  //   initDB();
-  // }, []);
+  useEffect(() => {
+    initDB();
+  }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <Stack screenOptions={{ headerShown: false }} />

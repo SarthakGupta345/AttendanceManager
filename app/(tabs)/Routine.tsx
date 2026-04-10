@@ -6,22 +6,14 @@ import { Image } from 'expo-image';
 import Octicons from '@expo/vector-icons/Octicons';
 import { StatusBar } from 'expo-status-bar';
 import * as ImagePicker from 'expo-image-picker';
+import { weeklyGridData, gridHeaders } from '@/Constants/weeklyGridData';
 
 type ViewMode = 'image' | 'table';
-
-export type ParsedClass = {
-  id: string;
-  time: string;
-  subjectName: string;
-  room: string;
-  type: string;
-};
 
 const Routine = () => {
 
   const [image, setImage] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('image');
-  const [tableData, setTableData] = useState<ParsedClass[] | null>(null);
 
   const pickImage = async () => {
     const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -37,18 +29,6 @@ const Routine = () => {
     if (!result.canceled) {
         setImage(result.assets[0].uri);
     }
-  };
-
-  const addManualTableData = () => {
-    // In the future, this could open a Modal to type in data manually.
-    // For now, we instantly generate the manual layout so you can see it!
-    const manualData: ParsedClass[] = [
-      { id: '1', time: '09:00 AM', subjectName: 'Software Engineering', room: 'CSE24231', type: 'Lecture' },
-      { id: '2', time: '10:30 AM', subjectName: 'Data Structures', room: 'CSE101', type: 'Lab' },
-      { id: '3', time: '12:00 PM', subjectName: 'Computer Networks', room: 'CSE302', type: 'Lecture' },
-      { id: '4', time: '02:00 PM', subjectName: 'Database Systems', room: 'CSE405', type: 'Seminar' },
-    ];
-    setTableData(manualData);
   };
 
   const toggleViewMode = () => {
@@ -67,7 +47,7 @@ const Routine = () => {
           activeOpacity={0.7}
           onPress={toggleViewMode}
         >
-          <Octicons 
+           <Octicons 
             name={viewMode === 'image' ? "table" : "image"} 
             size={22} 
             color="#0F172A" 
@@ -115,56 +95,62 @@ const Routine = () => {
           </>
         )}
 
-        {/* ======================= TABLE MODE ======================= */}
+        {/* ======================= FULL WEEK GRID MODE ======================= */}
         {viewMode === 'table' && (
-          <>
-            {!tableData ? (
-              <TouchableOpacity
-                style={styles.uploadBox}
-                activeOpacity={0.7}
-                onPress={addManualTableData}
-              >
-                <View style={[styles.uploadIconWrapper, { backgroundColor: "#F0FDF4" }]}>
-                  <Octicons name="table" size={36} color="#16A34A" />
-                </View>
-                <Text style={styles.uploadTitle}>Tabular Routine</Text>
-                <Text style={styles.uploadSubtitle}>Tap to build table manually</Text>
-              </TouchableOpacity>
-            ) : (
-              <View style={styles.tableContainer}>
-                <View style={styles.tableHeaderRow}>
-                  <Text style={[styles.tableHeaderCell, styles.timeCol]}>Time</Text>
-                  <Text style={[styles.tableHeaderCell, styles.detailsCol]}>Class Details</Text>
-                </View>
-                
-                <ScrollView showsVerticalScrollIndicator={false}>
-                  {tableData.map((item) => (
-                    <View key={item.id} style={styles.tableRow}>
-                      <View style={styles.timeCol}>
-                         <Text style={styles.tableCellTime}>{item.time}</Text>
-                         <View style={styles.typePill}>
-                           <Text style={styles.typePillText}>{item.type}</Text>
-                         </View>
+          <View style={styles.gridWrapper}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={true}>
+              <ScrollView showsVerticalScrollIndicator={true}>
+                <View>
+                  {/* Grid Headers */}
+                  <View style={styles.gridRow}>
+                     <View style={[styles.gridHeaderCell, { width: 70 }]}>
+                        <Text style={styles.tableHeaderCell}>DAY</Text>
+                     </View>
+                     {gridHeaders.map((header) => (
+                        <View key={header.id} style={[styles.gridHeaderCell, { width: header.width }]}>
+                           <Text style={[styles.tableHeaderCell, { textAlign: 'center' }]}>{header.name}</Text>
+                        </View>
+                     ))}
+                  </View>
+
+                  {/* Grid Data Rows */}
+                  {weeklyGridData.map((row, index) => (
+                    <View key={index} style={styles.gridRow}>
+                      
+                      {/* Day Column Locked Left conceptually */}
+                      <View style={styles.gridDayCell}>
+                         <Text style={styles.gridDayText}>{row.day}</Text>
                       </View>
-                      <View style={styles.detailsCol}>
-                         <Text style={styles.tableCellTextPrimary}>{item.subjectName}</Text>
-                         <Text style={styles.tableCellTextSecondary}>Room / Code • {item.room}</Text>
-                      </View>
+
+                      {/* Cells */}
+                      {row.cells.map((cell) => {
+                         let bgStyle = styles.bgEmpty;
+                         let textStylePrimary: any = styles.gridCellTextPrimary;
+                         
+                         if (cell.type === 'Lecture') { bgStyle = styles.bgLecture; textStylePrimary = [styles.gridCellTextPrimary, styles.textLecture]; }
+                         else if (cell.type === 'Lab') { bgStyle = styles.bgLab; textStylePrimary = [styles.gridCellTextPrimary, styles.textLab]; }
+                         else if (cell.type === 'Lunch') { bgStyle = styles.bgLunch; textStylePrimary = [styles.gridCellTextPrimary, styles.textLunch]; }
+                         else if (cell.type === 'Tutorial') { bgStyle = styles.bgTutorial; textStylePrimary = [styles.gridCellTextPrimary, styles.textTutorial]; }
+
+                         return (
+                           <View key={cell.id} style={[styles.gridDataCell, bgStyle, { width: cell.width }]}>
+                              {cell.type !== 'Empty' && (
+                                <>
+                                  {cell.name && <Text style={textStylePrimary}>{cell.name}</Text>}
+                                  {cell.code && <Text style={[styles.gridCellTextSecondary, { marginBottom: 4 }]}>{cell.code}</Text>}
+                                  {cell.detail && <Text style={styles.gridCellTextSecondary}>{cell.detail}</Text>}
+                                </>
+                              )}
+                           </View>
+                         )
+                      })}
+
                     </View>
                   ))}
-                </ScrollView>
-
-                <TouchableOpacity 
-                  activeOpacity={0.8}
-                  style={[styles.editFloatingButton, { backgroundColor: '#16A34A', shadowColor: '#16A34A' }]} 
-                  onPress={addManualTableData} // Eventually hook to Edit Form
-                >
-                  <Octicons name="pencil" size={16} color="#FFFFFF" />
-                  <Text style={styles.editFloatingText}>Edit</Text>
-                </TouchableOpacity>
-              </View>
-            )}
-          </>
+                </View>
+              </ScrollView>
+            </ScrollView>
+          </View>
         )}
 
       </View>

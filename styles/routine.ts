@@ -197,5 +197,109 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "700",
         color: "#4F46E5",
-    }
+    },
+
+    /* Day Selection Chips */
+    daySelectorScroller: {
+        maxHeight: 60,
+    },
+    daySelectorRow: {
+        flexDirection: "row",
+        paddingVertical: 8,
+        paddingHorizontal: 2,
+        marginBottom: 8,
+    },
+    dayChip: {
+        height: 38,
+        paddingHorizontal: 20,
+        borderRadius: 20,
+        backgroundColor: "#FFFFFF",
+        marginRight: 10,
+        borderWidth: 1,
+        borderColor: "#E2E8F0",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    dayChipActive: {
+        backgroundColor: "#4F46E5",
+        borderColor: "#4F46E5",
+        shadowColor: "#4F46E5",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 6,
+        elevation: 4,
+    },
+    dayText: {
+        fontSize: 14,
+        fontWeight: "700",
+        color: "#64748B",
+    },
+    dayTextActive: {
+        color: "#FFFFFF",
+    },
+    /* Spreadsheet Grid Styles */
+    gridWrapper: {
+        flex: 1,
+        backgroundColor: "#FFFFFF",
+        borderRadius: 16,
+        borderWidth: 1,
+        borderColor: "#E2E8F0",
+        overflow: "hidden",
+        marginBottom: 16,
+    },
+    gridRow: {
+        flexDirection: "row",
+        borderBottomWidth: 1,
+        borderBottomColor: "#E2E8F0",
+    },
+    gridHeaderCell: {
+        borderRightWidth: 1,
+        borderRightColor: "#E2E8F0",
+        padding: 8,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#F8FAFC",
+    },
+    gridDayCell: {
+        width: 70, // Matches CELL_DAY
+        borderRightWidth: 1,
+        borderRightColor: "#E2E8F0",
+        padding: 8,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#F8FAFC",
+    },
+    gridDayText: {
+        fontWeight: "800",
+        color: "#0F172A",
+    },
+    gridDataCell: {
+        borderRightWidth: 1,
+        borderRightColor: "#E2E8F0",
+        padding: 8,
+        justifyContent: "center",
+    },
+    gridCellTextPrimary: {
+        fontSize: 12,
+        fontWeight: "700",
+        color: "#0F172A",
+        textAlign: "center",
+        marginBottom: 4,
+    },
+    gridCellTextSecondary: {
+        fontSize: 10,
+        fontWeight: "600",
+        color: "#64748B",
+        textAlign: "center",
+    },
+    // Cell Background States
+    bgLecture: { backgroundColor: "#FFFFFF" },
+    bgLab: { backgroundColor: "#F0FDF4" },
+    bgLunch: { backgroundColor: "#FFF7ED", alignItems: "center" },
+    bgTutorial: { backgroundColor: "#EEF2FF" },
+    bgEmpty: { backgroundColor: "#F8FAFC" },
+    textLecture: { color: "#0F172A" },
+    textLab: { color: "#16A34A" },
+    textLunch: { color: "#EA580C" },
+    textTutorial: { color: "#4F46E5" }
 });

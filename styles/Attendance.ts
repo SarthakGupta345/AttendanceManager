@@ -165,4 +165,13 @@ export const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
+
+  markerDot: {
+    width: 4,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: "#4F46E5",
+    position: "absolute",
+    bottom: 4,
+  },
 });

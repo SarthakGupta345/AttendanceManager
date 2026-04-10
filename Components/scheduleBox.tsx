@@ -3,7 +3,19 @@ import React from 'react'
 import { styles } from '@/styles/schedule'
 import { Entypo } from '@expo/vector-icons'
 
-const ScheduleBox = () => {
+interface ScheduleBoxProps {
+    number: number;
+    subjectName: string;
+    code: string;
+    startTime: string;
+    endTime: string;
+    status: string;
+}
+
+const ScheduleBox = ({ number, subjectName, code, startTime, endTime, status }: ScheduleBoxProps) => {
+    // Capitalize status
+    const displayStatus = status.charAt(0).toUpperCase() + status.slice(1).replace('_', ' ');
+    
     return (
         <View style={styles.box}>
             {/* Menu */}
@@ -13,25 +25,34 @@ const ScheduleBox = () => {
 
             {/* Number */}
             <View style={styles.numberBox}>
-                <Text style={styles.numberText}>1</Text>
+                <Text style={styles.numberText}>{number}</Text>
             </View>
 
             {/* Content */}
             <View style={styles.content}>
                 <View style={styles.titleRow}>
-                    <Text style={styles.titleText}>Software Engineering</Text>
-                    <Text style={styles.codeText}>(CSE24231)</Text>
+                    <Text style={styles.titleText} numberOfLines={1}>{subjectName}</Text>
+                    <Text style={styles.codeText}>({code})</Text>
                 </View>
 
-                <Text style={styles.timeText}>09:00 AM – 10:00 AM</Text>
+                <Text style={styles.timeText}>{startTime} – {endTime}</Text>
 
                 {/* Status */}
-                <View style={styles.statusPill}>
-                    <Text style={styles.statusText}>Present</Text>
+                <View style={[
+                    styles.statusPill,
+                    status === 'present' && { backgroundColor: '#F0FDF4' },
+                    status === 'absent' && { backgroundColor: '#FEF2F2' },
+                    status === 'not_marked' && { backgroundColor: '#F8FAFC' },
+                ]}>
+                    <Text style={[
+                        styles.statusText,
+                        status === 'present' && { color: '#16A34A' },
+                        status === 'absent' && { color: '#DC2626' },
+                        status === 'not_marked' && { color: '#64748B' },
+                    ]}>{displayStatus}</Text>
                 </View>
             </View>
         </View>
-
     )
 }
 

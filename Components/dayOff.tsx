@@ -2,43 +2,66 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import icon from "../assets/images/dayofficon.png"
 import { Image } from 'expo-image'
+
 const DayOff = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>No Classes Today</Text>
-
-            <Image
-                source={icon}
-                alt='sunny Leone'
-                contentFit="contain"
-                transition={100}
-                style={styles.imageBox}
-            />
+            <View style={styles.card}>
+                <Image
+                    source={icon}
+                    contentFit="contain"
+                    transition={200}
+                    style={styles.imageBox}
+                />
+                <Text style={styles.title}>No Classes Today</Text>
+                <Text style={styles.subtitle}>Enjoy your weekend and take some time to recharge!</Text>
+            </View>
         </View>
     )
 }
+
 export default DayOff
 
 const styles = StyleSheet.create({
-    container:
-    {
-        flex: 1,
-        padding: 5
-
+    container: {
+        width: "100%",
+        paddingVertical: 10,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    card: {
+        width: "100%",
+        backgroundColor: "#fffcfcc8",
+        borderRadius: 24,
+        paddingVertical: 40,
+        paddingHorizontal: 20,
+        alignItems: "center",
+        borderWidth: 1,
+        borderColor: "#F1F5F9",
+        shadowColor: "#94A3B8",
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 0.1,
+        shadowRadius: 15,
+        elevation: 4,
     },
     imageBox: {
-        height: "85%",
-        width: "85%",
-        alignSelf: "center",
-        borderRadius: 10,
+        height: 180,
+        width: "100%",
+        marginBottom: 24,
     },
-    text: {
-        fontSize: 25,
-        fontWeight: "600",
-        marginTop: 12,
-        marginLeft: 16,
-        color: "#111827",
-        fontFamily: "Inter_600SemiBold"
-
+    title: {
+        fontSize: 24,
+        fontWeight: "800",
+        color: "#0F172A",
+        marginBottom: 8,
+        textAlign: "center",
+    },
+    subtitle: {
+        fontSize: 15,
+        fontWeight: "500",
+        color: "#64748B",
+        textAlign: "center",
+        lineHeight: 22,
+        paddingHorizontal: 20,
     }
 })
